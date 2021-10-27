@@ -39,7 +39,12 @@ library(SOCcer)
 ```
 
 Using the built-in data set we can query the first three jobs and see how long
-it takes.
+it takes. The first three job postings:
+```{r}
+head(job_desc, 3)
+```
+
+Now, using SOCcer to return the top three SOC matches for each:
 ```{r}
 system.time({
   jobs <- soccer(

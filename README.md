@@ -29,7 +29,19 @@ library(SOCcer)
 ```
 
 Using the built-in data set we can query the first three jobs and see
-how long it takes.
+how long it takes. The first three job postings:
+
+``` r
+head(job_desc, 3)
+#> # A tibble: 3 x 3
+#>      job_id title                                         description           
+#>       <dbl> <chr>                                         <chr>                 
+#> 1 140906257 deli clerk customer service                   polite prompt knowled~
+#> 2 140974158 roll off truck driver class b cdl 3 000 bonus operate manual automa~
+#> 3 140923731 field engineer 3                              perform advanced trou~
+```
+
+Now, using SOCcer to return the top three SOC matches for each:
 
 ``` r
 system.time({
@@ -42,7 +54,7 @@ system.time({
   )
 })
 #>    user  system elapsed 
-#>    0.06    0.05   11.00
+#>    0.16    0.00   10.88
 ```
 
 Now we can view the top 3 results for each posting.
