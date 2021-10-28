@@ -23,9 +23,14 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v1
       
-      - name: Render Rmarkdown files
+      - name: Install RMarkdown and local package
         run: |
           Rscript -e "install.packages('rmarkdown')"
+          Rscript -e "install.packages('devtools')"
+          Rscript -e "devtools::install_local()"
+      
+      - name: Render Rmarkdown files
+        run: |
           RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '[.]Rmd$'))
           Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f)' ${RMD_PATH[*]}
 
