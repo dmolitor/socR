@@ -12,6 +12,8 @@
 #' @param user_agent Character string of user agent. Set to helpful value so
 #'   for API maintainer in case of serious problems.
 #' @param verbose An integer between 0 and 3 specifying level of verbosity.
+#' @param progress A boolean; whether to print progress across job
+#'   classifications. Will only work if the `progressr` package is installed.
 #' @param ... Additional arguments that will be mutated onto the returned data
 #'   frame.
 #'
@@ -33,7 +35,15 @@ soccer <- function(job_title,
                    req_per_min = 12,
                    user_agent = "Daniel Molitor (dmolitor@ripl.org)",
                    verbose = 0L,
+                   progress = FALSE,
                    ...) {
+  if (progress && !requireNamespace("progressr", quietly = TRUE)) {
+    message("Package \"progressr\" required to print progress bar.",
+            appendLF = TRUE)
+    progress_allowed <- FALSE
+  } else {
+    progress_allowed <- TRUE
+  }
   args <- append(
     list("job_title" = job_title,
          "job_desc" = job_desc,
@@ -45,9 +55,37 @@ soccer <- function(job_title,
     list(...)
   )
   args <- wrap_null(args)
-  results <- purrr::pmap(
-    .l = args,
-    .f = soccer_enrich
-  )
+  if (progress && progress_allowed) {
+    progressr::with_progress({
+      pb <- progressr::progressor(along = 1:length(args[[1]]))
+      results <- purrr::pmap(
+        .l = args,
+        .f = function(job_title,
+                      job_desc,
+                      industry,
+                      n_results,
+                      req_per_min,
+                      user_agent,
+                      verbose,
+                      ...) {
+          out <- soccer_enrich(job_title,
+                               job_desc,
+                               industry,
+                               n_results,
+                               req_per_min,
+                               user_agent,
+                               verbose,
+                               ...)
+          pb()
+          out
+        }
+      )
+    })
+  } else {
+    results <- purrr::pmap(
+      .l = args,
+      .f = soccer_enrich
+    )
+  }
   coalesce_results(results)
 }
