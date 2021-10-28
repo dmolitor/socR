@@ -12,6 +12,7 @@ soccer(
   req_per_min = 12,
   user_agent = "Daniel Molitor (dmolitor@ripl.org)",
   verbose = 0L,
+  progress = FALSE,
   ...
 )
 }
@@ -30,6 +31,9 @@ soccer(
 for API maintainer in case of serious problems.}
 
 \item{verbose}{An integer between 0 and 3 specifying level of verbosity.}
+
+\item{progress}{A boolean; whether to print progress across job
+classifications. Will only work if the \code{progressr} package is installed.}
 
 \item{...}{Additional arguments that will be mutated onto the returned data
 frame.}

@@ -22,3 +22,5 @@ Imports:
     memoise,
     purrr,
     rappdirs
+Suggests:
+    progressr
