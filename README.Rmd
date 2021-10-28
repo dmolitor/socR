@@ -76,3 +76,8 @@ system.time({
   )
 })
 ```
+
+# SOCcer Official
+Daniel Russ, one of the creators of the SOCcer tool, has a similar package
+[available here](https://github.com/danielruss/socR). This is the source of
+truth for the API query formatting, as there is no documentation currently.
