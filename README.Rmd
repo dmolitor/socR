@@ -13,14 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SOCcer
+# socR
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/dmolitor/SOCcer/workflows/R-CMD-check/badge.svg)](https://github.com/dmolitor/SOCcer/actions)
+[![R-CMD-check](https://github.com/dmolitor/socR/workflows/R-CMD-check/badge.svg)](https://github.com/dmolitor/socR/actions)
 <!-- badges: end -->
 
-
-The goal of SOCcer is to query the SOCcer API.
+The goal of socR is to query the SOCcer API.
 
 ## Installation
 
@@ -28,14 +27,14 @@ You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("dmolitor/SOCcer")
+devtools::install_github("dmolitor/socR")
 ```
 ## Example
 
 This is a basic example of how to use the package:
 
 ```{r example}
-library(SOCcer)
+library(socR)
 ```
 
 Using the built-in data set we can query the first three jobs and see how long

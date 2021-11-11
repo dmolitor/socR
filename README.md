@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SOCcer
+# socR
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/dmolitor/SOCcer/workflows/R-CMD-check/badge.svg)](https://github.com/dmolitor/SOCcer/actions)
+[![R-CMD-check](https://github.com/dmolitor/socR/workflows/R-CMD-check/badge.svg)](https://github.com/dmolitor/socR/actions)
 <!-- badges: end -->
 
-The goal of SOCcer is to query the SOCcer API.
+The goal of socR is to query the SOCcer API.
 
 ## Installation
 
@@ -17,7 +17,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("dmolitor/SOCcer", auth_token = "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")
+devtools::install_github("dmolitor/socR")
 ```
 
 ## Example
@@ -25,7 +25,7 @@ devtools::install_github("dmolitor/SOCcer", auth_token = "ghp_HJk3bcujyEGNr4fkIL
 This is a basic example of how to use the package:
 
 ``` r
-library(SOCcer)
+library(socR)
 ```
 
 Using the built-in data set we can query the first three jobs and see
@@ -54,7 +54,7 @@ system.time({
   )
 })
 #>    user  system elapsed 
-#>    0.16    0.00   10.88
+#>    0.05    0.06   11.00
 ```
 
 Now we can view the top 3 results for each posting.
@@ -94,5 +94,12 @@ system.time({
   )
 })
 #>    user  system elapsed 
-#>       0       0       0
+#>    0.00    0.02    0.01
 ```
+
+# SOCcer Official
+
+Daniel Russ, one of the creators of the SOCcer tool, has a similar
+package [available here](https://github.com/danielruss/socR). This is
+the source of truth for the API query formatting, as there is no
+documentation currently.
