@@ -17,7 +17,10 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("dmolitor/socR", auth_token = "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")
+devtools::install_github(
+  "dmolitor/socR"
+  # auth_token = "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"
+)
 ```
 
 ## Example
