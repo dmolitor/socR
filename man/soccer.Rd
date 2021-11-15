@@ -9,7 +9,7 @@ soccer(
   job_desc = NULL,
   industry = NULL,
   n_results = 10,
-  req_per_min = 12,
+  req_per_min = 5000,
   user_agent = "Daniel Molitor (dmolitor@ripl.org)",
   verbose = 0L,
   progress = FALSE,
